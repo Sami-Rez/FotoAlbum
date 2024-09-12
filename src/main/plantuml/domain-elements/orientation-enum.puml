@@ -1,0 +1,9 @@
+@startuml
+
+enum Orientation {
+    PORTRAIT
+    LANDSCAPE
+    SQUARE
+}
+
+@enduml

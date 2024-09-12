@@ -1,0 +1,9 @@
+@startuml
+
+entity AlbumPhoto {
+    - album: Album
+    - photo: Photo
+    - position: Integer
+}
+
+@enduml

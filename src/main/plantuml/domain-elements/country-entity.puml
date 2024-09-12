@@ -1,0 +1,10 @@
+@startuml
+
+entity Country {
+    - name: String
+    - iso2Code: String
+    - countryCode: Integer
+    - topLevelDomain: String
+}
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+!include domain-elements/photo-entity.puml
+!include domain-elements/album-entity.puml
+!include domain-elements/album-photo-entity.puml
+!include domain-elements/album-type-enum.puml
+!include domain-elements/orientation-enum.puml
+!include domain-elements/abstract-user-class.puml
+!include domain-elements/email-richtype.puml
+!include domain-elements/photographer-entity.puml
+!include domain-elements/address-valueobject.puml
+!include domain-elements/country-entity.puml
+!include domain-elements/phonenumber-valueobject.puml
+!include domain-elements/person-entity.puml
+
+User <|-- Photographer : "is a"
+User <|-- Person : "is a"
+
+Photo "0..*" -- "0..1" Photographer
+Album "1" *-right- "0..n" AlbumPhoto
+Photo "1" *-left- "0..n" AlbumPhoto
+Photo .down. Orientation
+Album .left. AlbumType
+Photographer --> Address : "embedded"
+Photographer --> PhoneNumber : "embedded"
+Address -left-> Country
+User .. Email
+Photographer .. Email
+Album --> Photographer
+
+hide methods
+
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+
+abstract class User {
+    - username : Email
+    - password : String
+    - firstName: String
+    - lastName: String
+}
+
+@enduml

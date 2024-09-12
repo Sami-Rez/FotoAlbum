@@ -1,0 +1,10 @@
+@startuml
+
+class Address << (V,#FF7700) ValueObject >> {
+    - streetNumber: String
+    - zipCode: String
+    - city: String
+    - country: Country
+}
+
+@enduml

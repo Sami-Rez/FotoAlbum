@@ -1,0 +1,10 @@
+@startuml
+
+entity Photographer {
+    - studioAddress: Address
+    - mobilePhoneNumber: PhoneNumber
+    - businessPhoneNumber: PhoneNumber
+    - emailAddresses: List<Email>
+}
+
+@enduml

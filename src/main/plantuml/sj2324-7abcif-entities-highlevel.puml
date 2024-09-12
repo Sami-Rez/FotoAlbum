@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+!include domain-elements/photo-entity.puml
+!include domain-elements/album-entity.puml
+!include domain-elements/album-photo-entity.puml
+!include domain-elements/abstract-user-class.puml
+!include domain-elements/photographer-entity.puml
+!include domain-elements/country-entity.puml
+!include domain-elements/person-entity.puml
+
+User <|-- Photographer : "is a"
+User <|-- Person : "is a"
+
+Photo "0..*" -up-- "0..1" Photographer
+Album "1" *-down- "0..n" AlbumPhoto
+Photo "1" *-up- "0..n" AlbumPhoto
+Album -right-> Photographer
+
+hide methods
+hide members
+
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+
+!include ../domain-elements/email-richtype.puml
+
+note left of Email::address $rtemail
+  This member will be validated against RFC-xxx
+end note
+
+@enduml

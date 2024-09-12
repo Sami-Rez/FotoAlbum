@@ -1,0 +1,9 @@
+@startuml
+
+class PhoneNumber << (V,#FF7700) ValueObject >> {
+    - countryCode: Integer
+    - areaCode: Integer
+    - serialNumber: String
+}
+
+@enduml

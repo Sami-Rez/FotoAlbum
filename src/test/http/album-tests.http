@@ -1,0 +1,13 @@
+### all albums
+GET http://localhost:8080/api/albums
+Accept: application/json
+
+### all albums with a name containing 'My'
+GET http://localhost:8080/api/albums?namePart=album
+Accept: application/json
+
+### all albums with a name containing 'xxx' delivers 204
+GET http://localhost:8080/api/albums?namePart=xxx
+Accept: application/json
+
+###

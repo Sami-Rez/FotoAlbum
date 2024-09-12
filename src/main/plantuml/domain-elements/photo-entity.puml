@@ -1,0 +1,19 @@
+@startuml
+
+entity Photo {
+  - name: String
+  - description: String
+  - location: String
+  - creationTimestamp: LocalDateTime
+  - photographer: Photographer
+  - width: Integer
+  - height: Integer
+  - orientation: Orientation
+  - albumPhotos: List<AlbumPhoto>
+
+  + determineOrientation() : Orientation
+}
+
+
+
+@enduml

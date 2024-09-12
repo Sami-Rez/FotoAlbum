@@ -1,0 +1,7 @@
+@startuml
+
+class Email << (R,#88FF00) Richtype >>  {
+    - address: String
+}
+
+@enduml

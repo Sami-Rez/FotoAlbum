@@ -1,0 +1,10 @@
+@startuml
+
+entity Album {
+    - name : String
+    - owner : Photographer
+    - type : AlbumType
+    - albumPhotos: List<AlbumPhoto>
+}
+
+@enduml

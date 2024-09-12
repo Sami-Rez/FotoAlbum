@@ -1,0 +1,105 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+entity Photo {
+  - name: String
+  - description: String
+  - location: String
+  - creationTimestamp: LocalDateTime
+  - photographer: Photographer
+  - width: Integer
+  - height: Integer
+  - orientation: Orientation
+  - albumPhotos: List<AlbumPhoto>
+}
+
+entity Album {
+    - name : String
+    - owner : Photographer
+    - type : AlbumType
+    - albumPhotos: List<AlbumPhoto>
+}
+
+entity AlbumPhoto {
+    - album: Album
+    - photo: Photo
+    - position: Integer
+}
+
+enum AlbumType {
+    DIGITAL
+    PHYSICAL
+}
+
+enum Orientation {
+    PORTRAIT
+    LANDSCAPE
+    SQUARE
+}
+
+abstract class User {
+    - username : Email
+    - password : String
+    - firstName: String
+    - lastName: String
+}
+
+class Email << (R,#88FF00) ValueObject >>  {
+    - address: String
+}
+
+entity Photographer {
+    - studioAddress: Address
+    - mobilePhoneNumber: PhoneNumber
+    - businessPhoneNumber: PhoneNumber
+    - emailAddresses: List<Email>
+}
+
+class Address << (V,#FF7700) ValueObject >> {
+    - streetNumber: String
+    - zipCode: String
+    - city: String
+    - country: Country
+}
+
+entity Country {
+    - name: String
+    - iso2Code: String
+    - countryCode: Integer
+    - topLevelDomain: String
+}
+
+class PhoneNumber << (V,#FF7700) ValueObject >> {
+    - countryCode: Integer
+    - areaCode: Integer
+    - serialNumber: String
+}
+
+entity Person {
+    - nickName: String
+}
+
+note left of Email::address
+  This member will be validated against RFC-xxx
+end note
+
+' Associations / Relations
+' o-- Aggregation
+' *-- Composition
+
+User <|-- Photographer : "is a"
+User <|-- Person : "is a"
+
+Photo "0..*" -- "0..1" Photographer
+Album "1" *-right- "0..n" AlbumPhoto
+Photo "1" *-left- "0..n" AlbumPhoto
+Photo .down. Orientation
+Album .left. AlbumType
+Photographer --> Address : "embedded"
+Photographer --> PhoneNumber : "embedded"
+Address -left-> Country
+User .. Email
+Photographer .. Email
+Album --> Photographer
+
+@enduml
